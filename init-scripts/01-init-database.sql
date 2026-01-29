@@ -50,16 +50,14 @@ INSERT INTO emner (emne_kode, emne_navn, studiepoeng, beskrivelse) VALUES
     ('DATA1500', 'Databaser', 10, 'Introduksjon til databaser og SQL'),
     ('DATA1100', 'Programmering', 10, 'Introduksjon til programmering'),
     ('DATA2200', 'Databasesystemer', 10, 'Avanserte databasekonsepter'),
-    ('DATA3100', 'Distribuerte systemer', 10, 'Distribuerte databasesystemer'),
-    ('DATA6666', 'Test systemer', 10, 'Test systemer')
+    ('DATA3100', 'Distribuerte systemer', 10, 'Distribuerte databasesystemer')
 ON CONFLICT DO NOTHING;
 
 INSERT INTO studenter (fornavn, etternavn, epost, program_id) VALUES
     ('Ola', 'Nordmann', 'ola.nordmann@student.oslomet.no', 1),
     ('Kari', 'Normann', 'kari.normann@student.oslomet.no', 1),
     ('Per', 'Larsen', 'per.larsen@student.oslomet.no', 2),
-    ('Anna', 'Johansen', 'anna.johansen@student.oslomet.no', 3),
-    ('Hans', 'Hanssen', 'hans.hanssen@student.oslomet.no', 3)
+    ('Anna', 'Johansen', 'anna.johansen@student.oslomet.no', 3)
 ON CONFLICT DO NOTHING;
 
 INSERT INTO emneregistreringer (student_id, emne_id, semester, karakter) VALUES
