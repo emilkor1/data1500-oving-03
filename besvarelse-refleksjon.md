@@ -187,19 +187,31 @@ Bruk denne delen til å dokumentere interessante funn, problemer du møtte, elle
 ## Oppgave 4: Brukeradministrasjon og GRANT
 
 1. **Hva er Row-Level Security og hvorfor er det viktig?**
-   - Svar her...
+   - Row Level Security (RLS) er policies som settes opp for en tabell 
+   for å sette regler om hvem som kan se hva, endre eller slette informasjon
+   fra en tabell. Dette er viktig for at rollene som er tildelt brukere kun
+   skal få lov til å gjøre de operasjonene som de er tildelt. Dette minner
+   om RBAC, bare i stedet for at man definerer rettigheter på brukere defineres
+   hvilke data som er synlig i en gitt tabell.
 
 2. **Hva er forskjellen mellom RLS og kolonnebegrenset tilgang?**
-   - Svar her...
+   - RLS begrenser hvilke rader som er synlige og kolonnebegrenset tilgang
+   begrenser hvilke kolonner som er synlige.
 
 3. **Hvordan ville du implementert at en student bare kan se karakterer for sitt eget program?**
-   - Svar her...
+   - Jeg ville slått sammen `emneregistreringer`, `programmer` og `studenter` for å koble
+   karakter med programnavn og studentnavn. Deretter laget et view som kun viser relevante kolonner.
+   Avslutningsvis ville jeg laget en policy som kun tillater å vise en rad dersom studenten er medlem av
+   av programmet.
 
 4. **Hva er sikkerhetsproblemene ved å bruke views i stedet for RLS?**
-   - Svar her...
+   - Det opprinnelige datasettet er fortsatt tilstede selv om en view er laget. Dersom en bruker
+   får for mye rettigheter og har SELECT på det opprinnelige datasettet så kan all dataen bli sett.
 
 5. **Hvordan ville du testet at RLS-policyer fungerer korrekt?**
-   - Svar her...
+   - Som admin kan man "late" som man er en annen rolle med `SET ROLE foreleser_role;`.
+   Deretter kan man enkelt prøve å oppdatere en karakter eller legge til nye programmer for å teste
+   RLS.
 
 ---
 
